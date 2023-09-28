@@ -4,6 +4,7 @@ import { sidebarLinks } from '@/constants'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
+import { SignOutButton, SignedIn } from '@clerk/nextjs'
 
 
 function leftSidebar() {
@@ -31,6 +32,20 @@ function leftSidebar() {
             </Link>
           )
         })}
+      </div>
+      <div className='mt-10 px-6'>
+        <SignedIn>
+          <SignOutButton>
+            <div className='flex cursor-pointer'>
+              <Image
+                src='/assets/logout.svg'
+                alt='logout'
+                width={24}
+                height={24}
+              />
+            </div>
+          </SignOutButton>
+        </SignedIn>
       </div>
     </section>
   )
