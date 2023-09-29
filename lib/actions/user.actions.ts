@@ -4,10 +4,17 @@ import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 //import Community from "../models/community.model";
 //import Thread from "../models/thread.model";
 
+interface Params {
+  userId: string;
+  username: string;
+  name: string;
+  bio: string;
+  image: string;
+  path: string;
+}
 
 
 export async function updateUser({
@@ -62,14 +69,7 @@ export async function fetchUser(userId: string) {
   }
 }
 
-interface Params {
-  userId: string;
-  username: string;
-  name: string;
-  bio: string;
-  image: string;
-  path: string;
-}
+
 
 
 
