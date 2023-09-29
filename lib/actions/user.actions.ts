@@ -1,6 +1,13 @@
 "use server";
 
 import { connectToDB } from "../mongoose";
+import User from "../models/user.model";
+import { FilterQuery, SortOrder } from "mongoose";
+import { revalidatePath } from "next/cache";
+import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
+//import Community from "../models/community.model";
+//import Thread from "../models/thread.model";
+
 
 
 export async function updateUser({
@@ -38,12 +45,6 @@ export async function updateUser({
 
 
 /*
-import { FilterQuery, SortOrder } from "mongoose";
-import { revalidatePath } from "next/cache";
-
-import Community from "../models/community.model";
-import Thread from "../models/thread.model";
-import User from "../models/user.model";
 
 
 
