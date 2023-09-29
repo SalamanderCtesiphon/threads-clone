@@ -1,8 +1,20 @@
 "use client"
 
+interface Props {
+  user: {
+    id: string;
+    objectId: string;
+    username: string;
+    name: string;
+    bio: string;
+    image: string;
+  };
+  btnTitle: string;
+}
+
 import React from 'react'
 
-const AccountProfile = () => {
+const AccountProfile = ({ user, btnTitle}: Props) => {
   return (
     <div>AccountProfile</div>
   )
