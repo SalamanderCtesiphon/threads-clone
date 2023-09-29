@@ -20,6 +20,8 @@ import { Button } from '../ui/button';
 import * as z from "zod"
 import { isBase64Image } from '@/lib/utils';
 import { useUploadThing } from '@/lib/uploadthing';
+import { usePathname, useRouter } from 'next/navigation';
+import { updateUser } from '@/lib/actions/user.actions';
 
 interface Props {
   user: {
@@ -36,6 +38,8 @@ interface Props {
 const AccountProfile = ({ user, btnTitle}: Props) => {
   const [files, setFiles] = useState<File[]>([])
   const { startUpload } = useUploadThing("media")
+  const router = useRouter()
+  const pathname  = usePathname()
 
   const form = useForm({
     resolver: zodResolver(UserValidation),
@@ -59,7 +63,7 @@ const AccountProfile = ({ user, btnTitle}: Props) => {
       }
     }
 
-    /* await updateUser({
+    await updateUser({
       name: values.name,
       path: pathname,
       username: values.username,
@@ -72,7 +76,7 @@ const AccountProfile = ({ user, btnTitle}: Props) => {
       router.back();
     } else {
       router.push("/");
-    } */
+    }
   };
 
   const handleImage = (e: ChangeEvent<HTMLInputElement>, fieldChange: (value: string) => void) => {

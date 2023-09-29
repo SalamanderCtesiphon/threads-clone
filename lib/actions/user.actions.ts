@@ -30,7 +30,8 @@ export async function updateUser({
         image,
         onboarded: true,
       },
-      { upsert: true }
+      { upsert: true } //upsert means update and insert. it updates an existing object or create
+                       //s a new one if it doesn't exist.
     );
 
     if (path === "/profile/edit") {
