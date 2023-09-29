@@ -18,6 +18,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from '../ui/button';
 import * as z from "zod"
+import { isBase64Image } from '@/lib/utils';
+import { useUploadThing } from '@/lib/uploadthing'
 
 interface Props {
   user: {
