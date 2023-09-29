@@ -1,18 +1,10 @@
-
-function PostThread({ userId }: { userId: string }) {
-  return <h1 className='head-text'>Post Thread Form</h1>
-}
-
-export default PostThread
-
-/* "use client";
+"use client";
 
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { useOrganization } from "@clerk/nextjs";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { usePathname, useRouter } from "next/navigation";
-
 import {
   Form,
   FormControl,
@@ -24,8 +16,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-import { ThreadValidation } from "@/lib/validations/thread";
-import { createThread } from "@/lib/actions/thread.actions";
+i//mport { ThreadValidation } from "@/lib/validations/thread";
+//import { createThread } from "@/lib/actions/thread.actions";
 
 interface Props {
   userId: string;
@@ -86,4 +78,4 @@ function PostThread({ userId }: Props) {
   );
 }
 
-export default PostThread; */
+export default PostThread; 
