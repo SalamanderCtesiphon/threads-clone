@@ -30,11 +30,14 @@ const ThreadCard = ({
   author,
   community,
   createdAt,
-  comments
+  comments, 
+  isComment
 }: Props) => {
   return (
-    <article>
-      <h2 className="text-small-regular thext-light-2">
+    <article  className={`flex w-full flex-col rounded-xl ${
+      isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
+    }`}>
+      <h2 className="text-small-regular text-light-2">
         {content}
       </h2>
     </article>
