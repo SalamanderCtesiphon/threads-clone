@@ -4,6 +4,7 @@ import { connectToDB } from "../mongoose"
 import Thread from "../models/thread.model"
 import { revalidatePath } from "next/cache"
 import User from "../models/user.model";
+import Community from "../models/community.model";
 
 interface Params {
   text: string, 
@@ -45,20 +46,27 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   // Calculate the number of posts to skip
   const skipAmount = (pageNumber - 1) * pageSize;
 
-  // Fetch posts that have no parents (top-level threads)
-  const postsQuery = Thread.find({ parentId: { $in: [null, undefined]}})
-    .sort({ createdAt: 'desc'})
-    .skip(skipAmount)
-    .limit(pageSize)
-    .populate({ path: 'author', model: User })
-    .populate({
-      path: 'children', 
-      populate: {
-        path: 'author',
-        madel: User,
-        select: "_id name parentId image"
-      }
-    })
+   // Create a query to fetch the posts that have no parent (top-level threads) (a thread that is not a comment/reply).
+   const postsQuery = Thread.find({ parentId: { $in: [null, undefined] } })
+   .sort({ createdAt: "desc" })
+   .skip(skipAmount)
+   .limit(pageSize)
+   .populate({
+     path: "author",
+     model: User,
+   })
+   .populate({
+     path: "community",
+     model: Community,
+   })
+   .populate({
+     path: "children", // Populate the children field
+     populate: {
+       path: "author", // Populate the author field within children
+       model: User,
+       select: "_id name parentId image", // Select only _id and username fields of the author
+     },
+   });
 
     const totalPostsCount = await Thread.countDocuments({ parentId: { $in: [null, undefined]}})
 
