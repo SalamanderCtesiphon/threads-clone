@@ -75,3 +75,21 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 
     return { posts, isNext}
 }
+
+export async function fetchThreadById() {
+  connectToDB();
+
+  try {
+
+    //TODO populate Community
+
+    const thread = await Thread.findById(id)
+    .populate({
+      path: 'author',
+      model: User,
+      select: '_id id name imcage'
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
