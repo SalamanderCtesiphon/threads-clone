@@ -1,11 +1,26 @@
 "use server";
 
-import { connectToDB } from "../mongoose";
-import User from "../models/user.model";
 import { FilterQuery, SortOrder } from "mongoose";
 import { revalidatePath } from "next/cache";
+
 import Community from "../models/community.model";
 import Thread from "../models/thread.model";
+import User from "../models/user.model";
+
+import { connectToDB } from "../mongoose";
+
+export async function fetchUser(userId: string) {
+  try {
+    connectToDB();
+
+    return await User.findOne({ id: userId }).populate({
+      path: "communities",
+      model: Community,
+    });
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user: ${error.message}`);
+  }
+}
 
 interface Params {
   userId: string;
@@ -15,7 +30,6 @@ interface Params {
   image: string;
   path: string;
 }
-
 
 export async function updateUser({
   userId,
@@ -37,8 +51,7 @@ export async function updateUser({
         image,
         onboarded: true,
       },
-      { upsert: true } //upsert means update and insert. it updates an existing object or create
-                       //s a new one if it doesn't exist.
+      { upsert: true }
     );
 
     if (path === "/profile/edit") {
@@ -48,20 +61,6 @@ export async function updateUser({
     throw new Error(`Failed to create/update user: ${error.message}`);
   }
 }
-
-export async function fetchUser(userId: string) {
-  try {
-    connectToDB();
-
-    return await User.findOne({ id: userId })/* .populate({
-      path: "communities",
-      model: Community,
-    }); */
-  } catch (error: any) {
-    throw new Error(`Failed to fetch user: ${error.message}`);
-  }
-}
-
 
 export async function fetchUserPosts(userId: string) {
   try {
@@ -95,7 +94,6 @@ export async function fetchUserPosts(userId: string) {
   }
 }
 
-/*
 // Almost similar to Thead (search + pagination) and Community (search + pagination)
 export async function fetchUsers({
   userId,
@@ -182,4 +180,4 @@ export async function getActivity(userId: string) {
     console.error("Error fetching replies: ", error);
     throw error;
   }
-} */
+}
