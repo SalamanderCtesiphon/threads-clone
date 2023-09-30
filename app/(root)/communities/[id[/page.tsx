@@ -1,7 +1,7 @@
-/* import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import Searchbar from "@/components/shared/Searchbar";
+import Searchbar from "@/components/shared/SearchBar";
 import Pagination from "@/components/shared/Pagination";
 import CommunityCard from "@/components/cards/CommunityCard";
 
@@ -62,4 +62,4 @@ async function Page({
   );
 }
 
-export default Page; */
+export default Page;
