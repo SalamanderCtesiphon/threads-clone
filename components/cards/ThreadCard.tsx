@@ -111,6 +111,7 @@ function ThreadCard({
                 </Link>
               )}
             </div>
+            <p className="mt-2 text-[12px] text-light-2 ">{formatDateString(createdAt)}</p>
           </div>
         </div>
 
