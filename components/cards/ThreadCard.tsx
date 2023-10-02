@@ -70,7 +70,7 @@ function ThreadCard({
             <p className='mt-2 text-small-regular text-light-2'>{content}</p>
 
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
-              <div className='flex gap-3.5'>
+              <div className='flex gap-2'>
                 <Image
                   src='/assets/heart-gray.svg'
                   alt='heart'
@@ -111,7 +111,7 @@ function ThreadCard({
                 </Link>
               )}
             </div>
-            <p className="mt-2 text-[12px] text-gray-1 ">{formatDateString(createdAt)}</p>
+            <p className="text-[12px] text-gray-1 mb-6">{formatDateString(createdAt)}</p>
           </div>
         </div>
 
