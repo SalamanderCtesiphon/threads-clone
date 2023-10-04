@@ -10,17 +10,17 @@ import { headers } from "next/headers";
 import { IncomingHttpHeaders } from "http";
 
 import { NextResponse } from "next/server";
-import {
+/* import {
   addMemberToCommunity,
   createCommunity,
   deleteCommunity,
   removeUserFromCommunity,
   updateCommunityInfo,
-} from "@/lib/actions/community.actions";
+} from "@/lib/actions/community.actions"; */
 
 // Resource: https://clerk.com/docs/integration/webhooks#supported-events
 // Above document lists the supported events
-type EventType =
+/* type EventType =
   | "organization.created"
   | "organizationInvitation.created"
   | "organizationMembership.created"
@@ -33,7 +33,7 @@ type Event = {
   object: "event";
   type: EventType;
 };
-
+ */
 export const POST = async (request: Request) => {
   const payload = await request.json();
   const header = headers();
@@ -59,7 +59,7 @@ export const POST = async (request: Request) => {
     return NextResponse.json({ message: err }, { status: 400 });
   }
 
-  const eventType: EventType = evnt?.type!;
+  /* const eventType: EventType = evnt?.type!;
 
   // Listen organization creation event
   if (eventType === "organization.created") {
@@ -89,11 +89,11 @@ export const POST = async (request: Request) => {
       );
     }
   }
-
+ */
   // Listen organization invitation creation event.
   // Just to show. You can avoid this or tell people that we can create a new mongoose action and
   // add pending invites in the database.
-  if (eventType === "organizationInvitation.created") {
+  /* if (eventType === "organizationInvitation.created") {
     try {
       // Resource: https://clerk.com/docs/reference/backend-api/tag/Organization-Invitations#operation/CreateOrganizationInvitation
       console.log("Invitation created", evnt?.data);
@@ -205,4 +205,4 @@ export const POST = async (request: Request) => {
       );
     }
   }
-};
+}; */}
