@@ -19,7 +19,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from '../ui/button';
 import * as z from "zod"
 import { isBase64Image } from '@/lib/utils';
-import { useUploadThing } from '@/lib/uploadthing';
+//import { useUploadThing } from '@/lib/uploadthing';
 import { usePathname, useRouter } from 'next/navigation';
 import { updateUser } from '@/lib/actions/user.actions';
 
@@ -37,7 +37,7 @@ interface Props {
 
 const AccountProfile = ({ user, btnTitle}: Props) => {
   const [files, setFiles] = useState<File[]>([])
-  const { startUpload } = useUploadThing("media")
+  //const { startUpload } = useUploadThing("media")
   const router = useRouter()
   const pathname  = usePathname()
 
@@ -54,14 +54,14 @@ const AccountProfile = ({ user, btnTitle}: Props) => {
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
     const blob = values.profile_photo;
 
-    const hasImageChanged = isBase64Image(blob);
+    /* const hasImageChanged = isBase64Image(blob);
     if (hasImageChanged) {
       const imgRes = await startUpload(files);
 
       if (imgRes && imgRes[0].fileUrl) {
         values.profile_photo = imgRes[0].fileUrl;
       }
-    }
+    } */
 
     await updateUser({
       name: values.name,

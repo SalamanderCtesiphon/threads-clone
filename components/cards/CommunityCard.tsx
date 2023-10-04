@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "../ui/button";
@@ -70,4 +70,4 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
   );
 }
 
-export default CommunityCard;
+export default CommunityCard; */
