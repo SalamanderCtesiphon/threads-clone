@@ -1,4 +1,4 @@
-import { currentUser } from "@clerk/nextjs";
+/* import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 import Searchbar from "@/components/shared/SearchBar";
@@ -62,4 +62,4 @@ async function Page({
   );
 }
 
-export default Page;
+export default Page; */
