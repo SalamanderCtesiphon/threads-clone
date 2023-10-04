@@ -13,12 +13,12 @@ interface Props {
     name: string;
     image: string;
     id: string;
-  };
+  };/* 
   community: {
     id: string;
     name: string;
     image: string;
-  } | null;
+  } | null; */
   createdAt: string;
   comments: {
     author: {
@@ -33,8 +33,8 @@ function ThreadCard({
   currentUserId,
   parentId,
   content,
-  author,
-  community,
+  author,/* 
+  community, */
   createdAt,
   comments,
   isComment,
@@ -145,7 +145,7 @@ function ThreadCard({
         </div>
       )}
 
-      {!isComment && community && (
+     {/*  {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
           className='mt-5 flex items-center'
@@ -163,7 +163,7 @@ function ThreadCard({
             className='ml-1 rounded-full object-cover'
           />
         </Link>
-      )}
+      )} */}
     </article>
   );
 }
